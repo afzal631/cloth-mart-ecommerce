@@ -31,8 +31,9 @@ export default function Categories() {
   return (
     <>
       <div className="product__grid">
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <Link
+            key={index}
             className="categories__card"
             to={`/categories/${category.path}`}
           >

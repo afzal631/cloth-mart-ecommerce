@@ -7,6 +7,7 @@ import ShopPage from "../pages/shop/ShopPage";
 import SingleProducts from "../pages/shop/productDetails/SingleProducts";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import PrivateRoute from "./ProtectRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,11 +37,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <PrivateRoute>
+        <Login />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <PrivateRoute>
+        <Register />
+      </PrivateRoute>
+    ),
   },
 ]);
 

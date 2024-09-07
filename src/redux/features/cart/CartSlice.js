@@ -37,6 +37,10 @@ export const cartSlice = createSlice({
           } else if (action.payload.type === "decrement") {
             if (product.quantity > 0) {
               product.quantity -= 1;
+            } else if (product.quantity == 0) {
+              state.products = state.products.filter(
+                (product) => product._id !== action.payload.id
+              );
             }
           }
         }

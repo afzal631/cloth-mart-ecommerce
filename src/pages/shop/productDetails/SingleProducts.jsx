@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RatingStar from "../../../components/RatingStar";
+import { addToCart } from "../../../redux/features/cart/CartSlice";
+import { useDispatch } from "react-redux";
 
 export default function SingleProducts() {
+  const dispatch = useDispatch();
   return (
     <>
       <section className="section__container bg-primary-light">
@@ -50,7 +53,12 @@ export default function SingleProducts() {
               </div>
             </div>
 
-            <button className="mt-6 px-6 py-3 bg-primary text-white ">
+            <button
+              // onClick={() => {
+              //   dispatch(addToCart(products));
+              // }}
+              className="mt-6 px-6 py-3 bg-primary text-white "
+            >
               Add to Cart
             </button>
           </div>

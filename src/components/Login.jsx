@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../redux/features/auth/authApi";
+import { setUser } from "../redux/features/auth/authSlice";
 
 export default function Login() {
   const [message, setMessage] = useState("");
@@ -23,10 +24,12 @@ export default function Login() {
     if (!loginLoading) {
       try {
         const res = await loginUser(data);
+        const { user, accessToken } = res.data.data;
         if (res.error) {
           setMessage(res.error.data.message);
         } else {
           console.log(res);
+          dispatch(setUser({ user }));
           navigate("/");
         }
       } catch (error) {
